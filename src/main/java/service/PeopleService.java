@@ -54,4 +54,22 @@ public class PeopleService {
 		
 		return personRepository.save(updatedPerson);
 	}
+	//Patch
+	public Person updatePeopleByIdPatch(Integer id,@RequestBody Person updatedPerson) {
+		Person oldPerson = personRepository
+							.findById(id)
+							.orElseThrow(() -> new IllegalStateException("The person cannot be found"));
+		if(updatedPerson.getName() != null) {
+			oldPerson.setName(updatedPerson.getName());
+		}
+		
+		if(updatedPerson.getSurname() != null) {
+			oldPerson.setSurname(updatedPerson.getSurname());
+		}
+		
+		if(updatedPerson.getAge() != 0) {
+			oldPerson.setAge(updatedPerson.getAge());
+		}
+		return personRepository.save(oldPerson);
+	} 
 }
