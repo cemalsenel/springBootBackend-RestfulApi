@@ -44,7 +44,7 @@ public class PersonController {
 		return peopleService.addPeople(person);
 	}
 	
-	@GetMapping(path = "/{id}")
+	@GetMapping(path = "/search/{id}")
 	public Optional<Person> getAllPeopleById(@PathVariable Integer id) {
 		return peopleService.getPeopleById(id);
 	}
